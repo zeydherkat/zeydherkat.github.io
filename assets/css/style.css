@@ -146,3 +146,20 @@ form button:hover {
     font-size: 2.2rem;
   }
 }
+/* ===== SECTION PROFIL CENTRÉE ===== */
+#profil {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+#profil h1 {
+  margin-bottom: 20px;
+}
+
+#profil p {
+  max-width: 600px;
+  font-size: 1.2rem;
+}
