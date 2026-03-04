@@ -1,71 +1,148 @@
-/* Reset simple */
+/* Import Google Font */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');
+
 * {
-  margin: 0; 
+  margin: 0;
   padding: 0;
   box-sizing: border-box;
+  scroll-behavior: smooth;
 }
 
 body {
-  font-family: Arial, sans-serif;
+  font-family: 'Poppins', sans-serif;
+  background: #0f172a;
+  color: #f1f5f9;
   line-height: 1.6;
-  color: #222;
-  background-color: #fafafa;
-  padding: 20px;
 }
 
-/* Navigation */
-header nav ul {
-  display: flex;
-  gap: 15px;
-  list-style: none;
-  padding-bottom: 15px;
-  border-bottom: 2px solid #ddd;
-}
-header nav a {
-  text-decoration: none;
-  color: #333;
-  font-weight: bold;
-}
-header nav a:hover {
-  color: #007bff;
-}
-
-/* Sections */
-section {
-  margin-top: 40px;
-}
-section h1, section h2 {
-  margin-bottom: 15px;
-  border-bottom: 2px solid #007bff;
-  display: inline-block;
-}
-
-/* Cards */
-.card {
-  background: #fff;
-  border-radius: 6px;
-  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-  padding: 15px;
-  margin-bottom: 20px;
-}
-
-/* Form */
-form label {
-  display: block;
-  margin-top: 10px;
-}
-form input, form textarea, form button {
+/* ===== NAVIGATION ===== */
+header {
+  position: fixed;
   width: 100%;
-  padding: 8px;
-  margin-top: 5px;
+  top: 0;
+  background: rgba(15, 23, 42, 0.95);
+  backdrop-filter: blur(10px);
+  padding: 15px 50px;
+  z-index: 1000;
 }
-form button {
-  background: #007bff;
-  color: white;
-  border: none;
+
+nav ul {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  list-style: none;
+}
+
+nav a {
+  text-decoration: none;
+  color: #f1f5f9;
+  font-weight: 500;
+  transition: 0.3s;
+}
+
+nav a:hover {
+  color: #38bdf8;
+}
+
+/* ===== SECTIONS ===== */
+section {
+  padding: 120px 10%;
+  min-height: 100vh;
+}
+
+h1, h2 {
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+h1 {
+  font-size: 3rem;
+  background: linear-gradient(90deg, #38bdf8, #6366f1);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+h2 {
+  font-size: 2rem;
+  border-left: 5px solid #38bdf8;
+  padding-left: 10px;
+}
+
+/* ===== CARDS ===== */
+.card {
+  background: #1e293b;
+  padding: 20px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+  transition: 0.3s;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+}
+
+.card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 25px rgba(56,189,248,0.3);
+}
+
+/* ===== LISTES ===== */
+ul {
   margin-top: 10px;
-  cursor: pointer;
 }
+
+li {
+  margin-bottom: 8px;
+}
+
+/* ===== FORMULAIRE ===== */
+form {
+  max-width: 600px;
+}
+
+form input,
+form textarea {
+  width: 100%;
+  padding: 12px;
+  margin: 8px 0;
+  border-radius: 8px;
+  border: none;
+  background: #1e293b;
+  color: white;
+}
+
+form textarea {
+  min-height: 120px;
+}
+
+form button {
+  background: linear-gradient(90deg, #38bdf8, #6366f1);
+  color: white;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+  font-weight: 600;
+}
+
 form button:hover {
-  background: #0056b3;
+  transform: scale(1.05);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  nav ul {
+    flex-direction: column;
+    gap: 15px;
+  }
+
+  header {
+    padding: 15px;
+  }
+
+  section {
+    padding: 120px 5%;
+  }
+
+  h1 {
+    font-size: 2.2rem;
+  }
 }
