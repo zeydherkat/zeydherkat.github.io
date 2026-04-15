@@ -3,8 +3,279 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Portfolio BTS SIO SISR</title>
-  <link rel="stylesheet" href="assets/css/style.css"/>
+  <title>Portfolio BTS SIO SISR – Zeyd Herkat</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Segoe UI', Tahoma, sans-serif;
+      background: linear-gradient(135deg, #0f172a, #1e293b);
+      color: #f1f5f9;
+      line-height: 1.6;
+      text-align: center;
+    }
+
+    /* NAVBAR */
+    header {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      background: rgba(15, 23, 42, 0.95);
+      backdrop-filter: blur(8px);
+      padding: 15px 0;
+      z-index: 1000;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    }
+
+    nav ul {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      list-style: none;
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #f1f5f9;
+      font-weight: 500;
+      transition: 0.3s;
+      font-size: 0.95rem;
+    }
+
+    nav a:hover { color: #38bdf8; }
+
+    /* SECTIONS */
+    section {
+      min-height: 100vh;
+      padding: 120px 10%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    /* TITRES */
+    h1, h2, h3 { margin-bottom: 25px; }
+
+    h1 {
+      font-size: 3rem;
+      background: linear-gradient(90deg, #38bdf8, #6366f1);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    h2 {
+      font-size: 2rem;
+      position: relative;
+    }
+
+    h2::after {
+      content: "";
+      width: 60px;
+      height: 4px;
+      background: linear-gradient(90deg, #38bdf8, #6366f1);
+      display: block;
+      margin: 10px auto;
+      border-radius: 5px;
+    }
+
+    p {
+      max-width: 700px;
+      margin-bottom: 15px;
+      opacity: 0.9;
+    }
+
+    ul { list-style-position: inside; margin-bottom: 20px; }
+    li { margin-bottom: 8px; }
+
+    .card, article {
+      background: #1e293b;
+      padding: 25px;
+      border-radius: 15px;
+      margin-bottom: 25px;
+      width: 100%;
+      max-width: 800px;
+      transition: 0.3s;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+    }
+
+    .card:hover, article:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 8px 25px rgba(56,189,248,0.4);
+    }
+
+    /* PROFIL LAYOUT */
+    .profil-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+      width: 100%;
+      max-width: 900px;
+      text-align: left;
+      margin-top: 20px;
+    }
+
+    .profil-box {
+      background: #1e293b;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+    }
+
+    .profil-box h3 {
+      font-size: 1.2rem;
+      color: #38bdf8;
+      margin-bottom: 15px;
+      border-bottom: 1px solid rgba(56,189,248,0.3);
+      padding-bottom: 10px;
+    }
+
+    .profil-box p { max-width: 100%; opacity: 0.9; margin-bottom: 10px; }
+
+    .profil-box ul { list-style: none; padding: 0; }
+    .profil-box li { padding: 6px 0; border-bottom: 1px solid rgba(255,255,255,0.05); display: flex; align-items: center; gap: 8px; }
+    .profil-box li::before { content: "▹"; color: #38bdf8; font-size: 0.9rem; }
+
+    /* BOUTON CV */
+    .btn-cv {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 30px;
+      padding: 14px 30px;
+      background: linear-gradient(90deg, #38bdf8, #6366f1);
+      color: white;
+      font-weight: 600;
+      font-size: 1rem;
+      border-radius: 50px;
+      text-decoration: none;
+      transition: 0.3s;
+      box-shadow: 0 4px 15px rgba(56,189,248,0.3);
+    }
+
+    .btn-cv:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(56,189,248,0.5);
+    }
+
+    .btn-cv svg { width: 18px; height: 18px; fill: white; }
+
+    /* TABLEAU DE COMPÉTENCES */
+    .tableau-wrapper {
+      width: 100%;
+      max-width: 1000px;
+      overflow-x: auto;
+      margin-top: 20px;
+      border-radius: 12px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+    }
+
+    .tableau-competences {
+      width: 100%;
+      border-collapse: collapse;
+      background: #1e293b;
+      font-size: 0.85rem;
+      text-align: left;
+    }
+
+    .tableau-competences th {
+      background: rgba(56,189,248,0.15);
+      color: #38bdf8;
+      padding: 12px 10px;
+      font-weight: 600;
+      border: 1px solid rgba(56,189,248,0.2);
+      text-align: center;
+      font-size: 0.8rem;
+    }
+
+    .tableau-competences th.col-realisation {
+      text-align: left;
+      min-width: 220px;
+    }
+
+    .tableau-competences td {
+      padding: 10px;
+      border: 1px solid rgba(255,255,255,0.07);
+      color: #cbd5e1;
+      vertical-align: middle;
+    }
+
+    .tableau-competences tr:hover td { background: rgba(56,189,248,0.05); }
+
+    .tableau-competences .section-header td {
+      background: rgba(99,102,241,0.15);
+      color: #818cf8;
+      font-weight: 600;
+      font-size: 0.8rem;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      padding: 8px 10px;
+    }
+
+    .check {
+      text-align: center;
+      color: #38bdf8;
+      font-size: 1.1rem;
+    }
+
+    /* VEILLE */
+    .veille-card {
+      background: #1e293b;
+      padding: 25px 30px;
+      border-radius: 15px;
+      width: 100%;
+      max-width: 800px;
+      text-align: left;
+      margin-bottom: 20px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+    }
+
+    .veille-card h3 { color: #38bdf8; margin-bottom: 10px; font-size: 1.1rem; }
+    .veille-card p { max-width: 100%; margin: 0; opacity: 0.85; font-size: 0.95rem; }
+
+    /* CONTACT */
+    .contact-container {
+      background: #1e293b;
+      padding: 35px;
+      border-radius: 15px;
+      max-width: 500px;
+      width: 100%;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.3);
+      text-align: left;
+    }
+
+    .contact-container p { max-width: 100%; margin-bottom: 12px; }
+
+    .contact-links {
+      display: flex;
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .contact-links a {
+      padding: 10px 22px;
+      border-radius: 8px;
+      background: linear-gradient(90deg, #38bdf8, #6366f1);
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      transition: 0.3s;
+    }
+
+    .contact-links a:hover { transform: scale(1.05); }
+
+    /* BTS SIO */
+    #bts-sio { background: rgba(255,255,255,0.01); }
+    #bts-sio p { max-width: 700px; }
+
+    @media (max-width: 768px) {
+      nav ul { gap: 12px; }
+      h1 { font-size: 2.2rem; }
+      section { padding: 120px 5%; }
+      .profil-grid { grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
 <body>
 
@@ -13,96 +284,226 @@
     <nav>
       <ul>
         <li><a href="#profil">Profil</a></li>
-        <li><a href="#Stages">Stages</a></li>
+        <li><a href="#bts-sio">BTS SIO</a></li>
+        <li><a href="#stages">Stages</a></li>
         <li><a href="#projets">Projets</a></li>
-        <li><a href="#Competences technique">Competences technique</a></li>
-        <li><a href="#veille">Veille + Tableau de competence</a></li>
+        <li><a href="#competences">Compétences</a></li>
+        <li><a href="#veille">Veille & Tableau</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
     </nav>
   </header>
 
-  <!-- Profil -->
+  <!-- PROFIL + PARCOURS SCOLAIRE -->
   <section id="profil">
     <h1>Zeyd HERKAT</h1>
-    <p>Actuellement en BTS Services Informatiques aux Organisations, option Solutions d'Infrastructure, Systèmes et Réseaux (SISR), je développe des compétences techniques en administration systèmes et réseaux, virtualisation, et sécurité informatique.</p>
-    <h2>Parcours Scolaire</h2>
-    <ul>
-      <li>Bac technologique STI2D spésialiter EE</li>
-      <li>BTS SIO option SISR</li>
-    </ul>
-    <!-- Ajoute ici une photo si tu veux -->
+    <p>Étudiant en BTS SIO option SISR, spécialisé en administration systèmes et réseaux, virtualisation et sécurité informatique.</p>
+
+    <div class="profil-grid">
+      <!-- À propos -->
+      <div class="profil-box">
+        <h3>À propos</h3>
+        <p>18 ans – Permis B – Lyon, France</p>
+        <p>Actuellement en BTS Services Informatiques aux Organisations, option Solutions d'Infrastructure, Systèmes et Réseaux (SISR), je développe des compétences en administration systèmes, réseaux, virtualisation et sécurité informatique.</p>
+        <ul style="margin-top:10px;">
+          <li>Anglais : Niveau B1</li>
+          <li>Espagnol : Niveau B1</li>
+          <li>Loisirs : Basketball, Boxe, Manga, Anime</li>
+        </ul>
+      </div>
+
+      <!-- Parcours scolaire -->
+      <div class="profil-box">
+        <h3>Parcours scolaire</h3>
+        <ul>
+          <li>Bac Technologique STI2D – Spécialité EE<br><small style="color:#94a3b8;">Lycée Charlie Chaplin – 2024</small></li>
+          <li>BTS SIO – Option SISR (en cours)<br><small style="color:#94a3b8;">Lycée les Chassagnes – 2024–2025</small></li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Bouton téléchargement CV -->
+    <a class="btn-cv" href="CV_Zeyd_Herkat.pdf" download="CV_Zeyd_Herkat.pdf">
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M12 16l-5-5 1.41-1.41L11 13.17V4h2v9.17l2.59-2.58L17 11l-5 5zm-7 4v-2h14v2H5z"/>
+      </svg>
+      Télécharger mon CV
+    </a>
   </section>
 
-  <!-- BTS SIO c'est quoi -->
-  <section id="BTS SIO">
-    <h2>BTS SIO Option SISR c'est quoi ?</h2>
-    <ul>
-      <p>Le BTS Services Informatiques aux Organisations option Solutions d'Infrastructure, Systèmes et Réseaux forme des techniciens capables de gérer et maintenir les infrastructures informatiques d'une organisation.</p>
-    </ul>
-    
-  <!-- Expériences -->
-  <section id="Stages">
+  <!-- BTS SIO -->
+  <section id="bts-sio">
+    <h2>BTS SIO Option SISR, c'est quoi ?</h2>
+    <p>Le BTS Services Informatiques aux Organisations option Solutions d'Infrastructure, Systèmes et Réseaux forme des techniciens capables de gérer et maintenir les infrastructures informatiques d'une organisation.</p>
+    <p>La spécialité SISR est axée sur la gestion des serveurs, la sécurité réseau, la virtualisation et l'administration des systèmes d'exploitation.</p>
+  </section>
+
+  <!-- STAGES -->
+  <section id="stages">
     <h2>Stages</h2>
     <article>
-      <h3>Stage première année BTS SIO– Institution Soeur Emmanuelle</h3>
-      <p>Mission : Configuration de serveurs, gestion de tickets, …</p>
+      <h3>Stage 1ère année BTS SIO – Institution Sœur Emmanuelle</h3>
+      <p>Résolution de tickets, maintenance et installation de postes. Configuration de serveurs et gestion du support technique.</p>
     </article>
     <article>
-      <h3>Stage deuxième année BTS SIO - La Favorite</h3>
-      <p>Mission : Création de serveur d'IA, gestion de tickets, </p>
+      <h3>Stage 2ème année BTS SIO – La Favorite</h3>
+      <p>Création d'un serveur d'IA local (Open WebUI + Ollama), gestion de tickets et support aux utilisateurs.</p>
     </article>
-    <!-- Ajoute ici d'autres expériences -->
   </section>
 
-  <!-- Projets -->
+  <!-- PROJETS -->
   <section id="projets">
     <h2>Projets</h2>
     <div class="card">
-      <h3>serveur d'IA</h3>
-      <p>Installer une IA en local, accessible dans tout l'établissement. Outil utiliser: Open WebUI, Ollama, OpenSSL.</p>
-      <p>Outil utiliser: Open WebUI, Ollama, OpenSSL.</p>
+      <h3>Serveur d'IA local</h3>
+      <p>Installation d'une IA accessible dans tout l'établissement, déployée en local sur le réseau interne.</p>
+      <p><strong>Outils :</strong> Open WebUI, Ollama, OpenSSL</p>
     </div>
     <div class="card">
-      <h3>Serveur DHCP en HA</h3>
-      <p>crée un serveur DHCP en haute disponibiliter (HA) qui atribue des adresse ip automatiquement aux apareille qui se conecte au réseau</p>
-      <p>Outil utiliser: Active Directorie, Windows Serveur</p>
+      <h3>Serveur DHCP en haute disponibilité</h3>
+      <p>Mise en place d'un serveur DHCP en HA, attribuant des adresses IP automatiquement aux appareils du réseau avec bascule automatique en cas de panne.</p>
+      <p><strong>Outils :</strong> Active Directory, Windows Server</p>
     </div>
-    <!-- Plus de projets -->
   </section>
 
-  <!-- competences technique -->
-  <section id="Competences technique">
-    <h2>Competences technique</h2>
-    <ul>
-      <li>PIX</li>
-      <!-- Ajoute toutes tes certifications -->
-    </ul>
+  <!-- COMPÉTENCES TECHNIQUES -->
+  <section id="competences">
+    <h2>Compétences techniques</h2>
+    <div class="card" style="text-align:left;">
+      <ul style="list-style:none; padding:0; columns:2; gap:20px;">
+        <li style="padding:6px 0; border-bottom:1px solid rgba(255,255,255,0.07);">⚙️ Configuration de serveurs</li>
+        <li style="padding:6px 0; border-bottom:1px solid rgba(255,255,255,0.07);">🌐 Segmentation réseau Cisco</li>
+        <li style="padding:6px 0; border-bottom:1px solid rgba(255,255,255,0.07);">🖥️ Virtualisation (VMware, VBox)</li>
+        <li style="padding:6px 0; border-bottom:1px solid rgba(255,255,255,0.07);">🔒 Sécurisation des réseaux</li>
+        <li style="padding:6px 0; border-bottom:1px solid rgba(255,255,255,0.07);">🔧 Switches & Routeurs Cisco</li>
+        <li style="padding:6px 0; border-bottom:1px solid rgba(255,255,255,0.07);">📋 Gestion de tickets (GLPI)</li>
+        <li style="padding:6px 0; border-bottom:1px solid rgba(255,255,255,0.07);">🖧 Routage dynamique (OSPF)</li>
+        <li style="padding:6px 0; border-bottom:1px solid rgba(255,255,255,0.07);">🧪 Active Directory / GPO</li>
+        <li style="padding:6px 0;">🏅 Certification PIX</li>
+        <li style="padding:6px 0;">🐧 Linux / Windows Server</li>
+      </ul>
+    </div>
   </section>
 
-  <!-- Veille Technologique -->
+  <!-- VEILLE & TABLEAU DE COMPÉTENCES -->
   <section id="veille">
-    <h2>Veille Technologique</h2>
-    <p></p>
-    <!-- Tu peux ajouter une liste d'articles ou liens -->
+    <h2>Veille &amp; Tableau de compétences</h2>
+
+    <!-- Veille technologique -->
+    <h3 style="margin-bottom:20px; color:#38bdf8; font-size:1.3rem;">Veille technologique</h3>
+    <div class="veille-card">
+      <h3>Intelligence Artificielle en entreprise</h3>
+      <p>Suivi des évolutions des modèles de langage locaux (LLM), de leur déploiement en infrastructure privée, et des enjeux de confidentialité associés (Ollama, Open WebUI).</p>
+    </div>
+    <div class="veille-card">
+      <h3>Cybersécurité &amp; Zero Trust</h3>
+      <p>Veille sur les nouvelles menaces réseau, les architectures Zero Trust et les bonnes pratiques de segmentation et de supervision des systèmes d'information.</p>
+    </div>
+
+    <!-- Tableau de compétences E5 -->
+    <h3 style="margin: 50px 0 20px; color:#38bdf8; font-size:1.3rem;">Tableau de synthèse E5 – BTS SIO SISR 2026</h3>
+    <div class="tableau-wrapper">
+      <table class="tableau-competences">
+        <thead>
+          <tr>
+            <th class="col-realisation">Réalisation professionnelle</th>
+            <th>Gérer le<br>patrimoine<br>informatique</th>
+            <th>Répondre<br>aux incidents</th>
+            <th>Présence<br>en ligne</th>
+            <th>Mode<br>projet</th>
+            <th>Mettre à dispo<br>un service</th>
+            <th>Développement<br>professionnel</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="section-header">
+            <td colspan="7">Réalisations en cours de formation (TP / AP / TD)</td>
+          </tr>
+          <tr>
+            <td>Création &amp; sécurisation de l'infrastructure réseau – site MA BANQUE</td>
+            <td class="check">✔</td><td></td><td></td><td></td><td></td><td></td>
+          </tr>
+          <tr>
+            <td>Utilisation de gestionnaires de travail (Trello, Microsoft To Do)</td>
+            <td></td><td></td><td></td><td class="check">✔</td><td></td><td></td>
+          </tr>
+          <tr>
+            <td>Analyse de flux réseau avec Wireshark</td>
+            <td></td><td class="check">✔</td><td></td><td></td><td></td><td></td>
+          </tr>
+          <tr>
+            <td>Configuration de switches et routeurs sur Cisco Packet Tracer</td>
+            <td class="check">✔</td><td></td><td></td><td></td><td></td><td></td>
+          </tr>
+          <tr>
+            <td>Gestion des droits et permissions réseau via ACL</td>
+            <td class="check">✔</td><td></td><td></td><td></td><td></td><td></td>
+          </tr>
+          <tr>
+            <td>Gestion des utilisateurs et groupes via Active Directory</td>
+            <td class="check">✔</td><td></td><td></td><td></td><td></td><td></td>
+          </tr>
+          <tr>
+            <td>Mise en place d'un serveur de déploiement sur VM</td>
+            <td></td><td></td><td></td><td></td><td class="check">✔</td><td></td>
+          </tr>
+          <tr>
+            <td>Notions de base en cybersécurité</td>
+            <td></td><td></td><td></td><td></td><td></td><td class="check">✔</td>
+          </tr>
+          <tr>
+            <td>Utilisation de plusieurs OS (WDS, Linux, Kali, Debian)</td>
+            <td></td><td></td><td></td><td></td><td class="check">✔</td><td></td>
+          </tr>
+          <tr>
+            <td>Création et mise à jour du CV</td>
+            <td></td><td></td><td></td><td></td><td></td><td class="check">✔</td>
+          </tr>
+          <tr class="section-header">
+            <td colspan="7">Réalisations en milieu professionnel – 1ère année</td>
+          </tr>
+          <tr>
+            <td>Résolution de tickets (Institution Sœur Emmanuelle)</td>
+            <td></td><td class="check">✔</td><td></td><td></td><td></td><td></td>
+          </tr>
+          <tr>
+            <td>Déploiement d'une image Windows 11 sur des PC</td>
+            <td></td><td></td><td></td><td></td><td class="check">✔</td><td></td>
+          </tr>
+          <tr>
+            <td>Gestion du parc informatique avec GLPI</td>
+            <td class="check">✔</td><td></td><td></td><td></td><td></td><td></td>
+          </tr>
+          <tr class="section-header">
+            <td colspan="7">Réalisations en milieu professionnel – 2ème année</td>
+          </tr>
+          <tr>
+            <td>Création d'un serveur d'IA local (La Favorite)</td>
+            <td></td><td></td><td></td><td></td><td class="check">✔</td><td></td>
+          </tr>
+          <tr>
+            <td>Gestion de tickets – 2ème année</td>
+            <td></td><td class="check">✔</td><td></td><td></td><td></td><td></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </section>
 
-  <!-- Contact -->
+  <!-- CONTACT -->
   <section id="contact">
-  <h2>Contact</h2>
-
-  <div class="contact-container">
-    <p><strong>Nom :</strong> Zeyd Herkat</p>
-    <p><strong>Email :</strong> zeyd.herkat@email.com</p>
-    <p><strong>Téléphone :</strong> 06 00 00 00 00</p>
-    <p><strong>Ville :</strong> Lyon, France</p>
-
-    <div class="contact-links">
-      <a href="https://www.linkedin.com/in/tonprofil" target="_blank">LinkedIn</a>
-      <a href="https://github.com/zeydherkat" target="_blank">GitHub</a>
+    <h2>Contact</h2>
+    <div class="contact-container">
+      <p><strong>Nom :</strong> Zeyd Herkat</p>
+      <p><strong>Email :</strong> zeyd.herkat@gmail.com</p>
+      <p><strong>Téléphone :</strong> 07 67 01 91 21</p>
+      <p><strong>Ville :</strong> Meyzieu (69), France</p>
+      <div class="contact-links">
+        <a href="https://www.linkedin.com/in/tonprofil" target="_blank">LinkedIn</a>
+        <a href="https://github.com/zeydherkat" target="_blank">GitHub</a>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
 </body>
 </html>
